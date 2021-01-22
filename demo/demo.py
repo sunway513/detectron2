@@ -139,11 +139,13 @@ if __name__ == "__main__":
             else:
                 output_fname = args.output
             assert not os.path.isfile(output_fname), output_fname
+            #filename = output_fname
+            fourcc = cv2.VideoWriter_fourcc(*"MPEG")
             output_file = cv2.VideoWriter(
-                filename=output_fname,
+                '/dockerx/inference-ouput.mkv',
                 # some installation of opencv may not support x264 (due to its license),
                 # you can try other format (e.g. MPEG)
-                fourcc=cv2.VideoWriter_fourcc(*"x264"),
+                fourcc,
                 fps=float(frames_per_second),
                 frameSize=(width, height),
                 isColor=True,
